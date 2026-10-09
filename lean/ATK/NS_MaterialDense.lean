@@ -1,22 +1,11 @@
-/-!
-ATK NS dense material consolidation entrypoint.
-This file deliberately asserts no unproved terminal theorem.
-All certified theorems must be migrated with their exact dependencies
-and checked by Lean before adding their declarations here.
--/
-
+/-! NS dense entrypoint: no verified concrete NS source located in this repository's default-branch search. -/
 namespace ATK.NS
+structure SourceAudit where
+  exactSourceVerified : Bool
+  terminalProducerVerified : Bool
 
-/-- An explicit record of the certification state; not a mathematical proof. -/
-inductive AuditState where
-  | source
-  | buildPending
-  | kernelVerified
-  deriving DecidableEq, Repr
-
-/-- Conservative status until the dense source and kernel audit are complete. -/
-def currentState : AuditState := .buildPending
-
-theorem currentState_eq_buildPending : currentState = .buildPending := rfl
-
+def current : SourceAudit := ⟨false, false⟩
+theorem source_pending : current.exactSourceVerified = false := rfl
+theorem terminal_pending : current.terminalProducerVerified = false := rfl
 end ATK.NS
+#print axioms ATK.NS.source_pending
