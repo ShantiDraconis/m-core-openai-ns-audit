@@ -80,3 +80,27 @@ jobs:
           name: atk-kernel-report
           path: atk-kernel/reports/
 
+
+  ns-data:
+    name: Navier–Stokes — Taylor–Green, razão S/(νz)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Simular Taylor–Green (64³, Re = 100, t ≤ 3) e resumir
+        working-directory: atk-kernel/ns_data
+        shell: bash
+        run: |
+          pip install -q numpy
+          python3 taylor_green.py 64 100 3 0.01 tg_ci_N64_Re100_T3.csv
+          python3 analyze_ns.py 100 tg_ci_N64_Re100_T3.csv
+          echo "---- execuções completas (t ≤ 10) versionadas no repositório:"
+          python3 analyze_ns.py $(for f in tg_N64_Re*.csv; do r=${f#tg_N64_Re}; echo "${r%.csv} $f"; done)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atk-ns-data
+          path: atk-kernel/ns_data/*.csv
