@@ -2,3 +2,4 @@ ATK.NavierStokes.absorption
 ATK.NavierStokes.absorption_margin_pos
 ATK.NavierStokes.riccati_comparison
 ATK.NavierStokes.riccati_upper_bound
+ATK.NavierStokes.absorption_without_remainder_forces_decay

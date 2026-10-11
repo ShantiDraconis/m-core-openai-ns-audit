@@ -9,6 +9,11 @@ Enunciados auxiliares (não a regularidade global 3D):
 * `riccati_comparison`    — y' ≤ 2 C y² e y > 0 em [0,T] ⇒ 1/y(t) ≥ 1/y(0) - 2 C t.
 * `riccati_upper_bound`   — enquanto 1 - 2 C y(0) t > 0, y(t) ≤ y(0) / (1 - 2 C y(0) t).
 
+* `absorption_without_remainder_forces_decay` — se y'/2 + νz = bulk + tail, bulk ≤ c_B ν z,
+  tail ≤ δ ν z e c_B + δ < 1, então y' < 0 sempre que ν z > 0. As hipóteses de absorção do G1
+  (sem resto) obrigam a enstrofia a decrescer; soluções reais com enstrofia crescente
+  (Taylor–Green, ver ns_data) mostram que essas hipóteses não valem em geral.
+
 O limite superior pode explodir em tempo finito: isto é uma estimativa local.
 -/
 
@@ -77,9 +82,20 @@ theorem riccati_upper_bound {y y' : ℝ → ℝ} {C T t : ℝ} (hT : 0 ≤ T)
   rw [mul_sub, e1, e2] at key
   nlinarith [key]
 
+theorem absorption_without_remainder_forces_decay {ν z y' bulk tail cB δ : ℝ}
+    (hν : 0 < ν) (hz : 0 < z)
+    (hbal : y' / 2 + ν * z = bulk + tail)
+    (hB : bulk ≤ cB * ν * z) (hT : tail ≤ δ * ν * z) (hbudget : cB + δ < 1) :
+    y' < 0 := by
+  have hνz : 0 < ν * z := mul_pos hν hz
+  have hgap : 0 < 1 - cB - δ := by linarith
+  have hprod : 0 < (1 - cB - δ) * (ν * z) := mul_pos hgap hνz
+  nlinarith [hprod]
+
 end ATK.NavierStokes
 
 #print axioms ATK.NavierStokes.absorption
 #print axioms ATK.NavierStokes.absorption_margin_pos
 #print axioms ATK.NavierStokes.riccati_comparison
 #print axioms ATK.NavierStokes.riccati_upper_bound
+#print axioms ATK.NavierStokes.absorption_without_remainder_forces_decay
