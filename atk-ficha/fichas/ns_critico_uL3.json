@@ -1,0 +1,29 @@
+{
+  "id": "NS-crítico ‖u‖_L³·z",
+  "problema": "NS",
+  "alvo": "Navier–Stokes (A)",
+  "onde_quebra_hoje": "cotas por y, z só dão tempo curto",
+  "proposta": {
+    "nome": "F_crit",
+    "definicao": "‖u‖_{L³}·‖∇ω‖²",
+    "classe": "CriticalNorm",
+    "classe_medida": "PASSA_ESCALA",
+    "termos_rhs": [
+      {
+        "nome": "F_crit",
+        "vetor": [
+          3,
+          3
+        ]
+      }
+    ],
+    "conhecida_na_literatura": "|S| ≤ C‖u‖_{L³}·z (Hölder + Sobolev): com ‖u‖_{L³} pequeno dá regularidade global (dados pequenos); ‖u‖ limitado em L^∞_t L³_x ⇒ regular (Escauriaza–Seregin–Šverák 2003)",
+    "controle_dinamico": "",
+    "como_evita_barreira_tao": ""
+  },
+  "teste_numerico": "Medido em 128³ com atk-kernel/ns_data/new_functional.py (m-core-openai-ns-audit). Expoentes 3,3 e 3,3; F_crit/GN = 0.474.",
+  "revisao": {
+    "nota": "o difícil é controlar ‖u‖_{L³} para dado grande: a energia (escala λ⁻¹) é supercrítica."
+  },
+  "veredito_esperado": "INCOMPLETA"
+}

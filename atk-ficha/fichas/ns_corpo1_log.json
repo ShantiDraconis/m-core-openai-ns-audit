@@ -1,0 +1,26 @@
+{
+  "id": "NS-Corpo1 F_log = y^(3/4)z^(3/4)/√log(e+z/y)",
+  "problema": "NS",
+  "alvo": "Navier–Stokes (A)",
+  "onde_quebra_hoje": "a cota y^(3/4)z^(3/4) só dá tempo curto",
+  "proposta": {
+    "nome": "F_log",
+    "definicao": "GN/√log(e+z/y)",
+    "classe": "LogCriticalCorrection",
+    "classe_medida": "REJEITADO_ESCALA",
+    "termos_rhs": [
+      {
+        "nome": "F_log",
+        "vetor": [
+          3,
+          "11/4"
+        ]
+      }
+    ]
+  },
+  "teste_numerico": "Medido em 128³ com atk-kernel/ns_data/new_functional.py (m-core-openai-ns-audit). Expoente de dilatação medido 2.754 (λ=1.5) e 2.767 (λ=2), não 3: z/y cresce como λ² e o log cresce junto. (S−θνz)/F_log cresce como √log λ (2.9e-5 → 3.4e-4 de λ=1 a 1e100).",
+  "revisao": {
+    "nota": "dividir por qualquer função crescente de z/y tira o termo da reta λ = 3 — a cota quebra, só que devagar."
+  },
+  "veredito_esperado": "REJEITADA"
+}

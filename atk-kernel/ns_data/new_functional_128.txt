@@ -1,0 +1,30 @@
+n=128  semente: y=43.4111 z=1258.88 S=0.111925  |div u|max=3.1e-14
+
+funcional                          valor   exp. a  exp. λ(1.5)  exp. λ(2)     |F|/GN        F/S  veredito
+S_alt = -∫(u·∇)u·Δu            -0.111925   3.0000       3.0000     3.0000  3.131e-05         -1  TAUTOLOGICO (F = -1·S)
+F_det = ∫det(∇u)                       0      nan          nan        nan  0.000e+00          0  DEGENERADO (F ≡ 0)
+F_vs = ∫ω·Sym(∇u)·ω             0.111925   3.0000       3.0000     3.0000  3.131e-05          1  TAUTOLOGICO (F = +1·S)
+F_L3 = ∫|∇u|³                      209.5   3.0000       3.0000     3.0000  5.861e-02       1872  PASSA_ESCALA (falta controle dinâmico)
+F_crit = ‖u‖_L3·z                1692.71   3.0000       3.0000     3.0000  4.736e-01  1.512e+04  PASSA_ESCALA (falta controle dinâmico)
+GN = y^(3/4)·z^(3/4)             3574.28   3.0000       3.0000     3.0000  1.000e+00  3.193e+04  PASSA_ESCALA (falta controle dinâmico)
+T_log = GN/log(e+z/y)            1033.97   3.0000       2.5086     2.5334  2.893e-01       9238  REJEITADO_ESCALA
+F_log = GN/√log(e+z/y)           1922.42   3.0000       2.7543     2.7667  5.378e-01  1.718e+04  REJEITADO_ESCALA
+y² (rota 19, falsa)              1884.52   4.0000       2.0000     2.0000  5.272e-01  1.684e+04  REJEITADO_ESCALA
+
+Candidato 1, termo C·GN/log(e+z/y): (S − θνz)/T_log ao longo da dilatação (a = a*):
+  λ=1e+00: razão = 5.4124e-05
+  λ=1e+03: razão = 2.6903e-04
+  λ=1e+09: razão = 7.0165e-04
+  λ=1e+30: razão = 2.2158e-03
+  λ=1e+100: razão = 7.2630e-03
+  → cresce como log λ: nenhum C serve (mesma falha da rota 19, mais lenta).
+
+Corpo 1 (F_log = GN/√log(e+z/y)): (S − θνz)/F_log ao longo da dilatação (a = a*):
+  λ=1e+00: razão = 2.9111e-05
+  λ=1e+03: razão = 6.4902e-05
+  λ=1e+09: razão = 1.0481e-04
+  λ=1e+30: razão = 1.8626e-04
+  λ=1e+100: razão = 3.3722e-04
+  → cresce como √log λ: dividir por qualquer log que cresça com z/y quebra a escala λ³.
+
+z/y no campo semente = 28.9991; sob amplitude z/y não muda (a² / a²); sob dilatação cresce como λ².

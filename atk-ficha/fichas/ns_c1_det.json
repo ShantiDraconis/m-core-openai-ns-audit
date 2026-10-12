@@ -1,0 +1,26 @@
+{
+  "id": "NS-C1 F_det = ∫det(∇u) (+ GN/log)",
+  "problema": "NS",
+  "alvo": "Navier–Stokes (A) em ATK/Exact.lean",
+  "onde_quebra_hoje": "S ≤ θνz + C·y² falso (itens 19–21)",
+  "proposta": {
+    "nome": "F_det",
+    "definicao": "∫det(∇u) dx, com termo extra C·y^(3/4)z^(3/4)/log(e+z/y)",
+    "classe": "CancellationFunctional",
+    "classe_medida": "DEGENERADO",
+    "termos_rhs": [
+      {
+        "nome": "GN/log(e+z/y)",
+        "vetor": [
+          3,
+          "5/2"
+        ]
+      }
+    ]
+  },
+  "teste_numerico": "Medido em 128³ com atk-kernel/ns_data/new_functional.py (m-core-openai-ns-audit). ∫det(∇u) = 0 exatamente (lagrangiano nulo: vale para TODO campo periódico ou de suporte compacto, não só div-free; conferido também num campo aleatório: 1e-19 relativo). O termo com log tem expoente de dilatação medido 2.51–2.53 < 3; (S−θνz)/termo cresce como log λ.",
+  "revisao": {
+    "nota": "F_det ≡ 0: o 'cancelamento' é total e não carrega informação; resta só o termo com log, que quebra a escala."
+  },
+  "veredito_esperado": "REJEITADA"
+}

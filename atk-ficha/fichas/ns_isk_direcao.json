@@ -1,0 +1,16 @@
+{
+  "id": "NS-ISK operador direcional A_ξ(x,r)",
+  "problema": "NS",
+  "alvo": "Navier–Stokes (A)",
+  "onde_quebra_hoje": "cotas só por normas não veem a geometria do estiramento",
+  "proposta": {
+    "tipo": "criterio_geometrico",
+    "nome": "A_ξ",
+    "definicao": "sup_{|h|≤r} |ξ(x)×ξ(x+h)|, ξ = ω/|ω|",
+    "invariancia_de_escala": "ok",
+    "conhecida_na_literatura": "Constantin–Fefferman (1993): se a direção de ω é Lipschitz nas regiões de |ω| grande, não há explosão (Beirão da Veiga–Berselli: Hölder 1/2)",
+    "controle_dinamico": ""
+  },
+  "teste_numerico": "covariância A_{ξ_λ}(x,r,t) = A_ξ(λx,λr,λ²t) é identidade analítica (ξ é adimensional).",
+  "veredito_esperado": "INCOMPLETA"
+}

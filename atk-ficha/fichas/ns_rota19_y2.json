@@ -1,0 +1,21 @@
+{
+  "id": "NS-rota19 S ≤ θνz + C·y² (regressão)",
+  "problema": "NS",
+  "alvo": "itens 19–21",
+  "onde_quebra_hoje": "provado falso em ATK/Correcao_20261012.lean",
+  "proposta": {
+    "nome": "y²",
+    "definicao": "y²",
+    "classe_medida": "REJEITADO_ESCALA",
+    "termos_rhs": [
+      {
+        "nome": "y²",
+        "vetor": [
+          4,
+          2
+        ]
+      }
+    ]
+  },
+  "veredito_esperado": "REJEITADA"
+}

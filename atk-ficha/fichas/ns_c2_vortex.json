@@ -1,0 +1,26 @@
+{
+  "id": "NS-C2 F_vs = ∫ω·Sym(∇u)·ω",
+  "problema": "NS",
+  "alvo": "Navier–Stokes (A)",
+  "onde_quebra_hoje": "S ≤ θνz + C·y² falso",
+  "proposta": {
+    "nome": "F_vs",
+    "definicao": "∫ω·S_ij·ω dx, S = (∇u+∇uᵀ)/2",
+    "classe": "VortexStretching",
+    "classe_medida": "TAUTOLOGICO",
+    "termos_rhs": [
+      {
+        "nome": "F_vs",
+        "vetor": [
+          3,
+          3
+        ]
+      }
+    ]
+  },
+  "teste_numerico": "Medido em 128³ com atk-kernel/ns_data/new_functional.py (m-core-openai-ns-audit). F_vs/S = +1 exatamente (a parte antissimétrica de ∇u some contra ω⊗ω); e −∫(u·∇)u·Δu = −S.",
+  "revisao": {
+    "nota": "F_vs é o próprio S: a cota |S| ≤ C·F_vs é verdadeira com C = 1 e não diz nada (target laundering)."
+  },
+  "veredito_esperado": "REJEITADA"
+}

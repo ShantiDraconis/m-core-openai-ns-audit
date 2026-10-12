@@ -1,0 +1,26 @@
+{
+  "id": "NS-C3 F_L3 = ∫|∇u|³",
+  "problema": "NS",
+  "alvo": "Navier–Stokes (A)",
+  "onde_quebra_hoje": "S ≤ θνz + C·y² falso",
+  "proposta": {
+    "nome": "F_L3",
+    "definicao": "∫|∇u|³ dx",
+    "classe": "mesma escala de S (não é norma crítica: a crítica é ‖u‖_L³)",
+    "classe_medida": "PASSA_ESCALA",
+    "termos_rhs": [
+      {
+        "nome": "F_L3",
+        "vetor": [
+          3,
+          3
+        ]
+      }
+    ],
+    "conhecida_na_literatura": "|S| ≤ 2∫|∇u|³ (|ω|² ≤ 2|∇u|²) e ∫|∇u|³ ≤ C·y^(3/4)z^(3/4) (Gagliardo–Nirenberg): equivale à cota clássica, que só dá tempo curto",
+    "controle_dinamico": "",
+    "como_evita_barreira_tao": ""
+  },
+  "teste_numerico": "Medido em 128³ com atk-kernel/ns_data/new_functional.py (m-core-openai-ns-audit). Expoentes 3,3 (a) e 3,3 (λ); F_L3/GN = 0.0586; |S|/F_L3 = 5.3e-4.",
+  "veredito_esperado": "INCOMPLETA"
+}
